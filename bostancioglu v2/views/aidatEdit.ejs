@@ -1,0 +1,52 @@
+<!-- aidatEdit.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aidat Düzenleme</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Aidat Düzenleme Formu</h1>
+        <form action="/admin/aidat/edit/<%= aidat.id %>" method="POST">
+            <div class="form-group">
+                <label for="amount">Miktar:</label>
+                <input type="number" class="form-control" id="amount" name="amount" value="<%= aidat.amount %>">
+            </div>
+            <div class="form-group">
+                <label for="year">Yıl:</label>
+                <input type="number" class="form-control" id="year" name="year" value="<%= aidat.year %>">
+            </div>
+            <div class="form-group">
+                <label for="month">Ay:</label>
+                <input type="text" class="form-control" id="month" name="month" value="<%= aidat.month %>">
+            </div>
+            <!-- Detaylar kısmı -->
+            <div class="form-group">
+                <label for="details">Detaylar:</label>
+                <% aidat.details.forEach((detail, index)=> { %>
+                    <div class="row mb-2">
+                        <div class="col">
+                            <input type="text" class="form-control" name="details[<%= index %>][name]"
+                                value="<%= JSON.parse(detail).name %>" placeholder="Açıklama">
+                        </div>
+                        <div class="col">
+                            <input type="number" class="form-control" name="details[<%= index %>][price]"
+                                value="<%= JSON.parse(detail).price %>" placeholder="Fiyat">
+                        </div>
+                    </div>
+                    <% }); %>
+            </div>
+            <button type="submit" class="btn btn-primary">Güncelle</button>
+            <a href="/admin/aidatYonetim" class="btn btn-secondary">Geri</a>
+        </form>
+    </div>
+</body>
+
+</html>

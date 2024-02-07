@@ -1,0 +1,202 @@
+[
+    {
+        "name": "Ahmet Yılmaz",
+        "email": "ahmet.yilmaz@example.com",
+        "phone": "5551234567",
+        "block": "A",
+        "doorNumber": 1,
+        "apartmentSize": "4+1",
+        "password": "ahmet123",
+        "isAdmin": 0
+    },
+    {
+        "name": "Ayşe Kaya",
+        "email": "ayse.kaya@example.com",
+        "phone": "5552345678",
+        "block": "B",
+        "doorNumber": 1,
+        "apartmentSize": "3+1",
+        "password": "ayse456",
+        "isAdmin": 0
+    },
+    {
+        "name": "Fatih Demir",
+        "email": "fatih.demir@example.com",
+        "phone": "5553456789",
+        "block": "A",
+        "doorNumber": 2,
+        "apartmentSize": "4+1",
+        "password": "fatih789",
+        "isAdmin": 0
+    },
+    {
+        "name": "Deniz Öztürk",
+        "email": "deniz.ozturk@example.com",
+        "phone": "5554567890",
+        "block": "B",
+        "doorNumber": 2,
+        "apartmentSize": "4+1",
+        "password": "deniz123",
+        "isAdmin": 0
+    },
+    {
+        "name": "Emre Korkmaz",
+        "email": "emre.korkmaz@example.com",
+        "phone": "5555678901",
+        "block": "A",
+        "doorNumber": 3,
+        "apartmentSize": "4+1",
+        "password": "emre456",
+        "isAdmin": 0
+    },
+    {
+        "name": "Gizem Yıldırım",
+        "email": "gizem.yildirim@example.com",
+        "phone": "5556789012",
+        "block": "B",
+        "doorNumber": 3,
+        "apartmentSize": "3+1",
+        "password": "gizem789",
+        "isAdmin": 0
+    },
+    {
+        "name": "Hasan Çelik",
+        "email": "hasan.celik@example.com",
+        "phone": "5557890123",
+        "block": "A",
+        "doorNumber": 4,
+        "apartmentSize": "4+1",
+        "password": "hasan123",
+        "isAdmin": 0
+    },
+    {
+        "name": "İrem Arslan",
+        "email": "irem.arslan@example.com",
+        "phone": "5558901234",
+        "block": "B",
+        "doorNumber": 4,
+        "apartmentSize": "3+1",
+        "password": "irem456",
+        "isAdmin": 0
+    },
+    {
+        "name": "Kaan Kaya",
+        "email": "kaan.kaya@example.com",
+        "phone": "5559012345",
+        "block": "A",
+        "doorNumber": 5,
+        "apartmentSize": "4+1",
+        "password": "kaan789",
+        "isAdmin": 0
+    },
+    {
+        "name": "Leyla Şahin",
+        "email": "leyla.sahin@example.com",
+        "phone": "5550123456",
+        "block": "B",
+        "doorNumber": 5,
+        "apartmentSize": "3+1",
+        "password": "leyla123",
+        "isAdmin": 0
+    },
+    {
+        "name": "Mehmet Yılmaz",
+        "email": "mehmet.yilmaz@example.com",
+        "phone": "5551234567",
+        "block": "A",
+        "doorNumber": 6,
+        "apartmentSize": "4+1",
+        "password": "mehmet456",
+        "isAdmin": 0
+    },
+    {
+        "name": "Nur Demir",
+        "email": "nur.demir@example.com",
+        "phone": "5552345678",
+        "block": "B",
+        "doorNumber": 6,
+        "apartmentSize": "3+1",
+        "password": "nur789",
+        "isAdmin": 0
+    },
+    {
+        "name": "Onur Kaya",
+        "email": "onur.kaya@example.com",
+        "phone": "5553456789",
+        "block": "A",
+        "doorNumber": 7,
+        "apartmentSize": "4+1",
+        "password": "onur123",
+        "isAdmin": 0
+    },
+    {
+        "name": "Pınar Yıldız",
+        "email": "pinar.yildiz@example.com",
+        "phone": "5554567890",
+        "block": "B",
+        "doorNumber": 7,
+        "apartmentSize": "3+1",
+        "password": "pinar456",
+        "isAdmin": 0
+    },
+    {
+        "name": "Rıza Öztürk",
+        "email": "riza.ozturk@example.com",
+        "phone": "5555678901",
+        "block": "A",
+        "doorNumber": 8,
+        "apartmentSize": "4+1",
+        "password": "riza789",
+        "isAdmin": 0
+    },
+    {
+        "name": "Selin Korkmaz",
+        "email": "selin.korkmaz@example.com",
+        "phone": "5556789012",
+        "block": "B",
+        "doorNumber": 8,
+        "apartmentSize": "3+1",
+        "password": "selin123",
+        "isAdmin": 0
+    },
+    {
+        "name": "Tolga Yıldırım",
+        "email": "tolga.yildirim@example.com",
+        "phone": "5557890123",
+        "block": "A",
+        "doorNumber": 9,
+        "apartmentSize": "4+1",
+        "password": "tolga456",
+        "isAdmin": 0
+    },
+    {
+        "name": "Ümit Çelik",
+        "email": "umit.celik@example.com",
+        "phone": "5558901234",
+        "block": "B",
+        "doorNumber": 9,
+        "apartmentSize": "3+1",
+        "password": "umit789",
+        "isAdmin": 0
+    },
+    {
+        "name": "Vildan Arslan",
+        "email": "vildan.arslan@example.com",
+        "phone": "5559012345",
+        "block": "A",
+        "doorNumber": 10,
+        "apartmentSize": "4+1",
+        "password": "vildan123",
+        "isAdmin": 0
+    },
+    {
+        "name": "Yasin Kaya",
+        "email": "yasin.kaya@example.com",
+        "phone": "5550123456",
+        "block": "B",
+        "doorNumber": 10,
+        "apartmentSize": "3+1",
+        "password": "yasin456",
+        "isAdmin": 0
+    }
+]

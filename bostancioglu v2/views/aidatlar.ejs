@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BostancıOğlu - Kullanıcı Sayfası</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Merhaba, <%= name %>!</h2>
+            </div>
+            <% if (isAdmin===1) { %>
+                <div class="col-md-6 text-right">
+                    <a href="/adminPage" class="btn btn-primary">Yönetici Sayfası Girişi</a>
+                </div>
+                <% } %>
+        </div>
+        <hr>
+        <h4>Aidatlar</h4>
+        <% let groupedAidatlar={}; aidatlar.forEach(function(aidat) { let key=aidat.month + ' ' + aidat.year; if
+            (!groupedAidatlar[key]) { groupedAidatlar[key]=[]; } groupedAidatlar[key].push(aidat); }); %>
+            <% Object.keys(groupedAidatlar).forEach(function(key) { %>
+                <h5>
+                    <a href="#<%= key %>">
+                        <%= key %>
+                    </a>
+                </h5>
+                <table id="<%= key %>" class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Miktar</th>
+                            <th scope="col">Daire Büyüklüğü</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% groupedAidatlar[key].forEach(function(aidat) { %>
+                            <tr>
+                                <td>
+                                    <%= aidat.amount %>
+                                </td>
+                                <td>
+                                    <%= aidat.apartmentType %>
+                                </td>
+                            </tr>
+                            <% }); %>
+                    </tbody>
+                </table>
+                <% }); %>
+    </div>
+</body>
+
+</html>

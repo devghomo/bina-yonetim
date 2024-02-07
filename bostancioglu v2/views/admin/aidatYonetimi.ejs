@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BostancıOğlu - Aidat Yönetimi</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        hr {
+            border-top: 1px solid #ccc;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .btn-secondary,
+        .btn-primary {
+            margin-top: 10px;
+        }
+
+        .table {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        thead {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tbody tr:hover {
+            background-color: #e2e2e2;
+        }
+
+        .btn-group {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="text-center mb-4">Aidat Yönetimi</h2>
+        <hr>
+        <!-- Aidat Ekle Formu -->
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Aidat Ekle</h4>
+                <form id="aidatForm" method="POST" action="/admin/aidat">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="month">Ay:</label>
+                            <select class="form-control" id="month" name="month" required>
+                                <option value="" disabled selected>Ay Seçin</option>
+                                <option value="Ocak">Ocak</option>
+                                <option value="Şubat">Şubat</option>
+                                <option value="Mart">Mart</option>
+                                <option value="Nisan">Nisan</option>
+                                <option value="Mayıs">Mayıs</option>
+                                <option value="Haziran">Haziran</option>
+                                <option value="Temmuz">Temmuz</option>
+                                <option value="Ağustos">Ağustos</option>
+                                <option value="Eylül">Eylül</option>
+                                <option value="Ekim">Ekim</option>
+                                <option value="Kasım">Kasım</option>
+                                <option value="Aralık">Aralık</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="year">Yıl:</label>
+                            <input type="number" class="form-control" id="year" name="year" min="2000" max="2100"
+                                value="2024" required>
+                        </div>
+                    </div>
+                    <!-- Statik metin alanı olarak miktar -->
+                    <div class="form-group">
+                        <label for="amount">Miktar:</label>
+                        <input type="text" class="form-control" id="amount" name="amount" readonly>
+                    </div>
+                    <!-- Aidat Detayları -->
+                    <hr>
+                    <h5>Aidat Detayları</h5>
+                    <div id="aidatDetaylari">
+                        <!-- İlk aidat alanı burada olacak -->
+                    </div>
+                    <button type="button" class="btn btn-secondary" id="addAidatField">+</button>
+                    <button type="submit" class="btn btn-primary mt-2">Ekle</button>
+                </form>
+            </div>
+        </div>
+        <!-- End Aidat Ekle Formu -->
+    </div>
+    <div class="container">
+        <h2 class="text-center mt-5 mb-4">Aidatlar</h2>
+        <hr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Ay</th>
+                    <th scope="col">Yıl</th>
+                    <th scope="col">Tutar</th>
+                    <th scope="col">İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% aidatlar.forEach(aidat=> { %>
+                    <tr>
+                        <td>
+                            <%= aidat.month %>
+                        </td>
+                        <td>
+                            <%= aidat.year %>
+                        </td>
+                        <td>
+                            <%= aidat.amount %> ₺
+                        </td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-danger btn-sm"
+                                    onclick="deleteAidat('<%= aidat.id %>')">Sil</button>
+                                <!-- <a href="/admin/aidat/edit/<%= aidat.id %>">
+                                    <button type="button" class="btn btn-primary btn-sm">Düzenle</button>
+                                </a> -->
+
+                            </div>
+                        </td>
+                    </tr>
+                    <% }); %>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function deleteAidat(id) {
+            if (confirm("Bu aidatı silmek istiyormusun")) {
+                fetch('/admin/aidatYonetim/' + id, {
+                    method: 'DELETE',
+
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            console.log('aidat silindi');
+                        } else {
+                            console.error('aidat silinemedi');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('eerrrrrooorrr:', error);
+                    });
+            }
+        }
+    </script>
+
+    <script>
+        document.getElementById('addAidatField').addEventListener('click', function () {
+            var aidatDetaylari = document.getElementById('aidatDetaylari');
+            var yeniAidatAlan = document.createElement('div');
+            yeniAidatAlan.classList.add('form-group');
+            yeniAidatAlan.innerHTML = `
+        <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" name="aidatAdı[]" placeholder="Aidat Adı" required>
+            </div>
+            <div class="col">
+                <input type="number" class="form-control aidatTutarı" name="aidatTutarı[]" placeholder="Aidat Tutarı" required>
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-danger btn-sm mt-1 deleteAidatField">-</button>
+            </div>
+        </div>`;
+            aidatDetaylari.appendChild(yeniAidatAlan);
+            yeniAidatAlan.getElementsByClassName('deleteAidatField')[0].addEventListener('click', function () {
+                aidatDetaylari.removeChild(yeniAidatAlan);
+                hesaplaToplam();
+            });
+            hesaplaToplam(); // Yeni aidat alanı ekledikten sonra toplamı hesapla
+        });
+
+        function hesaplaToplam() {
+            var aidatTutarıInputlari = document.querySelectorAll('.aidatTutarı');
+            var toplam = 0;
+            var aidatDetaylari = [];
+            aidatTutarıInputlari.forEach(function (input) {
+                toplam += parseFloat(input.value) || 0;
+                // Aidat detaylarını oluştur
+                var aidatDetay = {
+                    name: input.parentNode.parentNode.querySelector('input[name="aidatAdı[]"]').value,
+                    price: parseFloat(input.value) || 0
+                };
+                aidatDetaylari.push(aidatDetay);
+            });
+            document.getElementById('amount').value = toplam.toFixed(2); // Toplamı göster
+        }
+
+        document.getElementById('aidatDetaylari').addEventListener('input', hesaplaToplam);
+
+        document.getElementById('aidatForm').addEventListener('submit', async function (event) {
+            event.preventDefault(); // Formun normal gönderimini engelle
+            var formData = new FormData(this); // Form verilerini al
+            var aidatDetaylari = Array.from(document.querySelectorAll('.aidatTutarı')).map(input => ({
+                name: input.parentNode.parentNode.querySelector('input[name="aidatAdı[]"]').value,
+                price: parseFloat(input.value) || 0
+            }));
+            formData.set('details', JSON.stringify(aidatDetaylari)); // Detayları FormData'ya ekle
+
+            try {
+                const response = await fetch('/admin/aidat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(Object.fromEntries(formData.entries()))
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                // Yönlendirme işlemi
+                window.location.href = '/userPage';
+            } catch (error) {
+                console.error('There was a problem with your fetch operation:', error);
+                // Hata durumunda gerekli işlemleri yapabilirsiniz, örneğin bir hata mesajı gösterebilirsiniz
+            }
+        });
+    </script>
+
+</body>
+
+</html>

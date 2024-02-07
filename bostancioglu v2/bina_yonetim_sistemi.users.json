@@ -1,0 +1,50 @@
+[{
+  "_id": {
+    "$oid": "65bff1042c9e15e752577495"
+  },
+  "amount": 5000,
+  "apartmentType": "3+1",
+  "year": 2024,
+  "month": "Şubat",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65bff10a2c9e15e752577498"
+  },
+  "amount": 7000,
+  "apartmentType": "4+1",
+  "year": 2024,
+  "month": "Şubat",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c14fcac427516c2b5270a9"
+  },
+  "amount": 50,
+  "year": 2024,
+  "month": "Ekim",
+  "details": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c150fec427516c2b5270b3"
+  },
+  "amount": 4,
+  "year": 2024,
+  "month": "Mayıs",
+  "details": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c15300c427516c2b5270be"
+  },
+  "amount": 5032,
+  "year": 2024,
+  "month": "Şubat",
+  "details": [],
+  "__v": 0
+}]

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BostancıOğlu - Üye Ol</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Üye Ol</h2>
+        <form id="signupForm">
+            <div class="form-group">
+                <label for="name">İsim</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-posta</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Telefon</label>
+                <input type="tel" class="form-control" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="block">Blok Seçiniz</label>
+                <select class="form-control" id="block" name="block" required>
+                    <option value="" disabled selected>-</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="doorNumber">Kapı Numarası</label>
+                <input type="number" class="form-control" id="doorNumber" name="doorNumber" required>
+            </div>
+            <div class="form-group">
+                <label for="apartmentSize">Daire Büyüklüğü</label>
+                <select class="form-control" id="apartmentSize" name="apartmentSize" required>
+
+                    <option value="" disabled selected>-</option>
+                    <option value="4+1">4+1</option>
+                    <option value="3+1">3+1</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="password">Şifre</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="passwordConfirm">Şifre Tekrar</label>
+                <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Üye Ol</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#block').change(function () {
+                if ($(this).val() === 'A') {
+                    $('#apartmentSize').val('4+1').prop('disabled', true);
+                } else {
+                    $('#apartmentSize').prop('disabled', false);
+                }
+            });
+
+            $('#signupForm').submit(function (event) {
+                event.preventDefault();
+                var formData = $(this).serialize();
+                $.ajax({
+                    type: 'POST',
+                    url: '/signup',
+                    data: formData,
+                    success: function (response) {
+                        alert('Üyelik başarıyla oluşturuldu. Giriş yapabilirsiniz.');
+                        window.location.href = '/login';
+                    },
+                    error: function (err) {
+                        alert('Üyelik oluşturulamadı. Lütfen bilgilerinizi kontrol edin.');
+                        console.error(err);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

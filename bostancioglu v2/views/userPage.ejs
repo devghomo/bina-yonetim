@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BostancıOğlu - Aidat Listesi</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Stil Ayarları */
+        /* Özel stil ayarlarını buraya ekleyebilirsiniz */
+        body {
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .admin-button {
+            position: absolute;
+            top: 30px;
+            right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <% if (isAdmin) { %>
+            <a href="/adminpage" class="btn btn-primary admin-button">Admin Girişi</a>
+            <% } else { %>
+                <p>Aidat detayları bulunamadı.</p>
+                <% } %>
+                    <div class="container mt-5">
+                        <h2>Aidatlar</h2>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Aidatlar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% aidatlar.forEach(function(aidat) { %>
+                                    <tr>
+                                        <td><a href="/aidat/<%= aidat._id %>">
+                                                <%= aidat.month %>
+                                                    <%= aidat.year %>
+                                            </a></td>
+                                    </tr>
+                                    <% }); %>
+                            </tbody>
+                        </table>
+                    </div>
+    </div>
+</body>
+
+</html>
