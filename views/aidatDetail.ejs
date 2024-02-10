@@ -5,45 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aidat Detayları</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        /* Stil Ayarları */
-        /* Özel stil ayarlarını buraya ekleyebilirsiniz */
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body>
-    <div class="container mt-5">
+<body class="bg-gray-100">
+    <div class="container mx-auto mt-5 px-4">
         <% if (aidat) { %>
-            <h2>
+            <h2 class="text-3xl font-semibold mb-4">
                 <%= aidat.month %>
                     <%= aidat.year %> Aidat Detayları
             </h2>
 
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Harcananlar</th>
-                        <th scope="col">Tutar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% aidat.details.forEach(detail=> { %>
-                        <% JSON.parse(detail).forEach(item=> { %>
-                            <tr>
-                                <td>
-                                    <%= item.name %>
-                                </td>
-                                <td>
-                                    <%= item.price %>₺
-                                </td>
-                            </tr>
-                            <% }); %>
+            <div class="overflow-x-auto">
+                <table class="w-full table-auto bg-white shadow-md rounded-lg">
+                    <thead>
+                        <tr class="bg-gray-200 text-gray-700">
+                            <th class="px-4 py-2">Harcananlar</th>
+                            <th class="px-4 py-2">Tutar</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-600">
+                        <% aidat.details.forEach(detail=> { %>
+                            <% JSON.parse(detail).forEach(item=> { %>
+                                <tr>
+                                    <td class="border px-4 py-2">
+                                        <%= item.name %>
+                                    </td>
+                                    <td class="border px-4 py-2">
+                                        <%= item.price %>₺
+                                    </td>
+                                </tr>
                                 <% }); %>
-                </tbody>
-            </table>
+                                    <% }); %>
+                    </tbody>
+                </table>
+            </div>
             <% } else { %>
-                <p>Aidat detayları bulunamadı.</p>
+                <p class="text-xl text-center">Aidat detayları bulunamadı.</p>
                 <% } %>
     </div>
 </body>

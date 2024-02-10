@@ -44,24 +44,20 @@
         <table class="min-w-full bg-white rounded-lg overflow-hidden shadow-lg">
             <thead class="bg-gray-200 uppercase text-sm text-gray-700">
                 <tr>
-                    <th class="py-3 px-6 text-left text-gray-800">İsim</th>
-                    <th class="py-3 px-6 text-left text-gray-800">Telefon</th>
-                    <th class="py-3 px-6 text-left text-gray-800">Blok</th>
-                    <th class="py-3 px-6 text-left text-gray-800">Kapı Numarası</th>
-                    <th class="py-3 px-6 text-left text-gray-800">Daire Büyüklüğü</th>
-                    <th class="py-3 px-6 text-left text-gray-800">İşlemler</th>
+                    <th class="py-3 px-6 text-left">İsim</th>
+                    <th class="py-3 px-6 text-left">Telefon</th>
+                    <th class="py-3 px-6 text-left">Blok</th>
+                    <th class="py-3 px-6 text-left">Kapı Numarası</th>
+                    <th class="py-3 px-6 text-left">Daire Büyüklüğü</th>
+                    <th class="py-3 px-6 text-left">İşlemler</th>
                 </tr>
             </thead>
-            <tbody class="text-gray-800 text-sm font-light">
+            <tbody class="text-gray-600 text-sm font-light">
                 <% users.forEach(user=> { %>
                     <tr class="border-b border-gray-200 hover:bg-gray-100">
-
-                        <td class="py-3 px-6 text-left whitespace-nowrap text-gray-900">
-                            <strong>
-                                <%= user.name %>
-                            </strong>
+                        <td class="py-3 px-6 text-left whitespace-nowrap">
+                            <%= user.name %>
                         </td>
-
                         <td class="py-3 px-6 text-left whitespace-nowrap">
                             <%= user.phone %>
                         </td>
@@ -75,10 +71,8 @@
                             <%= user.apartmentSize %>
                         </td>
                         <td class="py-3 px-6 text-left whitespace-nowrap">
-
-                            <button class="px-3 py-1 bg-red-500 hover:bg-red-600 text-white rounded"
-                                onclick="confirmDelete('<%= user._id %>')">Sil</button>
-
+                            <button onclick="deleteUser('<%= user._id %>')"
+                                class="px-3 py-1 bg-red-500 hover:bg-red-600 text-white rounded">Sil</button>
                         </td>
                     </tr>
                     <% }); %>
@@ -92,23 +86,21 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        function confirmDelete(userId) {
-            if (confirm("Kullanıcıyı silmek istediğinize emin misiniz?")) {
-                fetch('/deleteUser/' + userId, {
-                    method: 'DELETE'
+        function deleteUser(userId) {
+            fetch('/deleteUser/' + userId, {
+                method: 'DELETE'
+            })
+                .then(response => {
+                    if (response.ok) {
+                        console.log('Kullanıcı başarıyla silindi.');
+                        location.reload(); // Sayfanın yenilenmesi
+                    } else {
+                        console.error('Kullanıcı silinemedi.');
+                    }
                 })
-                    .then(response => {
-                        if (response.ok) {
-                            console.log('Kullanıcı başarıyla silindi.');
-                            location.reload(); // Sayfanın yenilenmesi
-                        } else {
-                            console.error('Kullanıcı silinemedi.');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Bir hata oluştu:', error);
-                    });
-            }
+                .catch(error => {
+                    console.error('Bir hata oluştu:', error);
+                });
         }
     </script>
 </body>

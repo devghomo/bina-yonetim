@@ -5,50 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BostancıOğlu - Aidat Listesi</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        /* Stil Ayarları */
-        /* Özel stil ayarlarını buraya ekleyebilirsiniz */
-        body {
-            text-align: center;
-            font-size: 20px;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .admin-button {
-            position: absolute;
-            top: 30px;
-            right: 10px;
-        }
-    </style>
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body>
-    <div class="container mt-5">
+<body class="bg-gray-100">
+    <div class="container mx-auto mt-5 px-4">
         <% if (isAdmin) { %>
-            <a href="/adminpage" class="btn btn-primary admin-button">Admin Girişi</a>
+            <div class="text-center">
+                <a href="/adminpage"
+                    class="text-white bg-blue-500 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Admin
+                    Girişi</a>
+            </div>
             <% } else { %>
-                <p>Aidat detayları bulunamadı.</p>
                 <% } %>
                     <div class="container mt-5">
-                        <h2>Aidatlar</h2>
-                        <table class="table">
+                        <h2 class="text-3xl font-bold mb-4 text-center">Aidatlar</h2>
+                        <table class="table-auto w-full">
                             <thead>
                                 <tr>
-                                    <th>Aidatlar</th>
+                                    <th class="px-4 py-2 bg-gray-200 text-xl text-center">Aidatlar</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <% aidatlar.forEach(function(aidat) { %>
                                     <tr>
-                                        <td><a href="/aidat/<%= aidat._id %>">
+                                        <td class="px-4 py-2 text-lg text-center">
+                                            <a href="/aidat/<%= aidat._id %>"
+                                                class="text-blue-500 hover:text-blue-700 font-medium">
                                                 <%= aidat.month %>
                                                     <%= aidat.year %>
-                                            </a></td>
+                                            </a>
+                                        </td>
                                     </tr>
                                     <% }); %>
                             </tbody>

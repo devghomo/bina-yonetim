@@ -5,31 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Page</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body>
-    <div class="container mt-4">
-        <h1 class="mb-4">Hoşgeldin <%= name %>
+<body class="bg-gray-100">
+    <div class="container mx-auto mt-4">
+        <h1 class="text-3xl font-bold text-center mb-4">Hoşgeldin <%= name %>
         </h1>
-        <div class="card">
-            <div class="card-header">
-                <h2>Yapabileceğiniz İşlemler</h2>
-            </div>
-            <div class="card-body">
-                <ul class="list-group">
-                    <li class="list-group-item"><a href="/admin/users">Kullanıcıları Görüntüle</a></li>
-                    <!-- Diğer işlemler buraya eklenebilir -->
-                    <li class="list-group-item"><a href="/admin/aidatYonetim">Aidat Yönetimi</a></li>
-                </ul>
+
+        <div class="border border-gray-300 rounded-lg p-4">
+            <h2 class="text-xl font-semibold mb-2">Yapabileceğiniz İşlemler</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <a href="/admin/users" class="text-blue-500 hover:text-blue-700 font-medium block">Kullanıcıları
+                        Görüntüle</a>
+                </div>
+                <!-- Diğer işlemler buraya eklenebilir -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <a href="/admin/aidatYonetim" class="text-blue-500 hover:text-blue-700 font-medium block">Aidat
+                        Yönetimi</a>
+                </div>
             </div>
         </div>
     </div>
-    <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
