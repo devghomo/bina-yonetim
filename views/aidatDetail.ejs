@@ -25,18 +25,26 @@
                         </tr>
                     </thead>
                     <tbody class="text-gray-600">
-                        <% aidat.details.forEach(detail=> { %>
-                            <% JSON.parse(detail).forEach(item=> { %>
-                                <tr>
-                                    <td class="border px-4 py-2">
-                                        <%= item.name %>
-                                    </td>
-                                    <td class="border px-4 py-2">
-                                        <%= item.price %>₺
-                                    </td>
-                                </tr>
-                                <% }); %>
-                                    <% }); %>
+                        <% let totalAmount=0; %>
+                            <% aidat.details.forEach(detail=> { %>
+                                <% JSON.parse(detail).forEach(item=> { %>
+                                    <% totalAmount +=item.price; %>
+                                        <tr>
+                                            <td class="border px-4 py-2">
+                                                <%= item.name %>
+                                            </td>
+                                            <td class="border px-4 py-2">
+                                                <%= item.price %>₺
+                                            </td>
+                                        </tr>
+                                        <% }); %>
+                                            <% }); %>
+                                                <tr class="bg-gray-200 text-gray-700">
+                                                    <td class="border px-4 py-2">Toplam</td>
+                                                    <td class="border px-4 py-2">
+                                                        <%= totalAmount %>₺
+                                                    </td>
+                                                </tr>
                     </tbody>
                 </table>
             </div>
