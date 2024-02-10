@@ -9,7 +9,10 @@ const userSchema = new mongoose.Schema({
     phone: String,
     block: String,
     doorNumber: String,
-    apartmentSize: String,
+    apartmentSize: {
+        type: String,
+        default: "4+1"
+    },
     password: String,
     isAdmin: Number
 });
