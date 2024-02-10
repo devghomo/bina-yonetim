@@ -1,4 +1,3 @@
-// index.js
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -6,15 +5,13 @@ const User = require('./models/User');
 const path = require('path');
 const Aidat = require('./models/Aidat');
 const app = express();
-const port = 3000;
+require("dotenv").config();
+const port = process.env.PORT;
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-mongoose.connect('mongodb://localhost/bina_yonetim_sistemi', { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('MongoDB bağlantısı başarılı'))
-    .catch(err => console.error('MongoDB bağlantı hatası:', err));
-
+const connectDB = require("./connectMongo");
+connectDB()
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'admin'));
 app.set('views', path.join(__dirname, 'views'));
