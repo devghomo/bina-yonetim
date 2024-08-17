@@ -1,8 +1,6 @@
-// models/User.js
 
 const mongoose = require('mongoose');
 
-// Kullanıcı şeması
 const userSchema = new mongoose.Schema({
     name: String,
     email: String,
@@ -17,7 +15,6 @@ const userSchema = new mongoose.Schema({
     isAdmin: Number
 });
 
-// Kullanıcı modeli
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
